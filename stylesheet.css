@@ -14,11 +14,8 @@
     font-family: serif;
     display: block;
 }
-a.no-color-change:link,
-a.no-color-change:visited,
-a.no-color-change:hover,
-a.no-color-change:active{
-    color: #000000
+a:link, a:visited, a:hover, a:active {
+  color: #000000;
 }
 .title-1,.title-2,.title-3,.title-4{
     font-size: 24px;
