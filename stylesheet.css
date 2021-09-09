@@ -14,7 +14,7 @@
     font-family: serif;
     display: block;
 }
-a,a:visited{
+.a:visited{
   color: #000000;
 }
 .title-1,.title-2,.title-3,.title-4{
