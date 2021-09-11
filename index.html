@@ -1,4 +1,41 @@
-<!DOCTYPE html>
+<form name=certifier>
+<input type=password name=p required placeholder="パスワードを入力してください"><!-- Enter を押すと送信される -->
+<button type=submit>送信</button>
+</form>
+
+<script>
+
+// パスワードとリンク先 URL の設定
+var LINKS = [
+_ {pw:"pass1", url:"secret.html"},
+_ {pw:"pass2", url:"himitsu.html"},
+];
+
+window.addEventListener('load', function(ev) {
+_ var form = document.forms["certifier"];
+
+_ // 送信されたパスワードに従い URL を変える
+_ form.addEventListener('submit', function(event) {
+_ _ event.preventDefault(); // 実際には送信させない
+_ _ var p = form.elements['p'];
+_ _ var link = LINKS.filter(x => x.pw == p.value);
+_ _ if (link.length == 0) {
+_ _ _ // フォーム検証 API を使って問題をお知らせ
+_ _ _ p.setCustomValidity("パスワードが違います");
+_ _ _ p.reportValidity();
+_ _ _ return;
+_ _ }
+_ _ location.href = link[0].url; // 送信ではなく単純リンク
+_ }, false);
+
+_ // 入力があったら、表示中のお知らせを消す
+_ form.addEventListener('input', function(event) {
+_ _ event.target.setCustomValidity("");
+_ }, false);
+
+}, false);
+
+</script><!DOCTYPE html>
 <html>
   <head>
     <link rel="stylesheet" href="stylesheet.css">
